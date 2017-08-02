@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Долги";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+        .inc {
+            color: #f00;
+        }
+
+            .inc:before {
+                content: '+';
+            }
+
+        /*#gridContainer .dec:before {
+        content: '-';
+    }*/
+
+        .dec {
+            color: #2ab71b;
+        }
+
+        .inc:after {
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAADKSURBVHjaYtTaLs1ABEiG0nPRJa56PEHhsxBhmCUQT4OyrwHxcXyKmQgYJgHE64CYDYrXQcXIMhCbAcgWkGzgNKh38QUB0QamIUUErkhKI9ZAGyCeTERkTYaqxWsgKA2txhdG6GGsvUNGGpeBRMUiGhCFGsqGzUBQQJsxkA5AemaiG5hDIBIIgQSgK0FmMDACs549kN5FZLjhA7+A2A2U9YSAOBeLAk4gnoBDczoOcSFGPIUDPxB/wCHHiKtwYGKgMhg1cBAaCBBgAJTUIL3ToPZfAAAAAElFTkSuQmCC');
+        }
+
+        .dec:after {
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAADJSURBVHjaYvzPgBfgkhYA4o8QFahKmBioDEYNHIQGsgBxIBCLkqgvAYi/g1mMjMjir0EJzR6If/6HpChKMMgMe3DKBeIcKhiY8x/MYoDj+RQYNgdkGLqBbEB8kgzDToL1YjEQhKWB+BUJhj0H64Eahs1AELYhMpJ+gtUiGYbLQBBOI8LANLBaIg1kAAc0vkiAqSPBQFAkHcNi2DGoHMkGgrAENOCRI0ECRQ2JBoKwJTQCfkLZDPgMZPxPXN5NhtJzMSsJVBMAAgwAyWSY2svfmrwAAAAASUVORK5CYII=');
+        }
+</style>
+<div id="heading">
+    <h3>Accounts receivable</h3>
+</div>
+<div data-bind="dxLoadPanel: {closeOnOutsideClick: true, visible: isLoad}"></div>
+<div id="gridContainer">
+    <div class="row">
+        <div class="col-md-7">
+            <div data-bind="dxDataGrid: gridSupersOptions"></div>
+        </div>
+        <div class="col-md-5">
+            <div data-bind="dxDataGrid: gridAgentsOptions"></div>
+        </div>
+    </div>
+    <div class="popup" data-bind="dxPopup: popupOptionsGrid">
+        <div class="info" data-options="dxTemplate: { name:'customers' }">
+            <div data-bind="dxDataGrid: gridKontragentsOptions"></div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>var Debts = window.Debt || {};</script>
+    <script src="~/app/utils.js"></script>
+    <script src="~/app/data/db.js"></script>
+    <script src="~/app/data/api.js"></script>
+    <script src="~/app/data/configAPI.js"></script>
+    <script src="~/app/config/debts.js"></script>
+    <script src="~/app/view/debts.js"></script>
+}
+
